@@ -7,17 +7,25 @@ import ProductCard from "@/components/ProductCard";
 import ProcessTimeline from "@/components/ProcessTimeline";
 import QualitySection from "@/components/QualitySection";
 import MarketMap from "@/components/MarketMap";
+import WhyChooseUs from "@/components/WhyChooseUs";
 import Footer from "@/components/Footer";
-import { content, siteConfig } from "@/data/content";
+import SEO from "@/components/SEO";
+import { useLanguage } from "@/context/LanguageContext";
+import { siteConfig } from "@/data/content";
 import { Button } from "@/components/ui/button";
 import { Link } from "react-router-dom";
-import { ArrowRight, CheckCircle2 } from "lucide-react";
+import { CheckCircle2 } from "lucide-react";
 
 const Index = () => {
-  const { products } = content.en;
+  const { t } = useLanguage();
+  const { products } = t;
 
   return (
     <div className="min-h-screen bg-white selection:bg-emerald-100 selection:text-emerald-900">
+      <SEO 
+        title="Home" 
+        description="Atcfruit is a Mersin-based fruit import and distribution company specializing in bananas, citrus fruits, apples, and pomegranates." 
+      />
       <Navbar />
       
       <Hero />
@@ -41,7 +49,6 @@ const Index = () => {
               <div className="absolute -bottom-12 -right-12 w-72 h-72 bg-amber-100 rounded-full -z-10 blur-3xl opacity-60" />
               <div className="absolute -top-12 -left-12 w-72 h-72 bg-emerald-100 rounded-full -z-10 blur-3xl opacity-60" />
               
-              {/* Floating Badge */}
               <div className="absolute top-12 -right-8 z-20 bg-white p-6 rounded-3xl shadow-xl border border-slate-100 animate-bounce-slow">
                 <div className="text-3xl font-bold text-emerald-600">24/7</div>
                 <div className="text-xs font-bold text-slate-500 uppercase tracking-wider">Port Operations</div>
@@ -101,7 +108,7 @@ const Index = () => {
           </div>
           
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
-            {products.map((product) => (
+            {products.map((product: any) => (
               <ProductCard key={product.id} product={product} />
             ))}
           </div>
@@ -109,6 +116,8 @@ const Index = () => {
       </section>
 
       <QualitySection />
+
+      <WhyChooseUs />
 
       <MarketMap />
 
@@ -147,7 +156,6 @@ const Index = () => {
 
       <Footer />
       
-      {/* Floating WhatsApp */}
       <a 
         href={`https://wa.me/${siteConfig.contact.whatsapp}`}
         target="_blank"

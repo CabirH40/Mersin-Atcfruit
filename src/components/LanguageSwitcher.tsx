@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React from "react";
 import { Globe } from "lucide-react";
 import {
   DropdownMenu,
@@ -7,15 +7,17 @@ import {
   DropdownMenuTrigger,
 } from "@/components/ui/dropdown-menu";
 import { Button } from "@/components/ui/button";
+import { useLanguage } from "@/context/LanguageContext";
+import { Language } from "@/data/content";
 
 const languages = [
-  { code: "EN", name: "English" },
-  { code: "TR", name: "Türkçe" },
-  { code: "AR", name: "العربية" },
+  { code: "en", name: "English" },
+  { code: "tr", name: "Türkçe" },
+  { code: "ar", name: "العربية" },
 ];
 
 const LanguageSwitcher = ({ scrolled }: { scrolled: boolean }) => {
-  const [currentLang, setCurrentLang] = useState("EN");
+  const { language, setLanguage } = useLanguage();
 
   return (
     <DropdownMenu>
@@ -28,14 +30,14 @@ const LanguageSwitcher = ({ scrolled }: { scrolled: boolean }) => {
           }`}
         >
           <Globe size={16} />
-          <span className="font-bold text-xs">{currentLang}</span>
+          <span className="font-bold text-xs uppercase">{language}</span>
         </Button>
       </DropdownMenuTrigger>
       <DropdownMenuContent align="end" className="rounded-xl">
         {languages.map((lang) => (
           <DropdownMenuItem 
             key={lang.code}
-            onClick={() => setCurrentLang(lang.code)}
+            onClick={() => setLanguage(lang.code as Language)}
             className="cursor-pointer font-medium"
           >
             {lang.name}
