@@ -1,11 +1,16 @@
 import React from "react";
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
+import SEO from "@/components/SEO";
+import { useLanguage } from "@/context/LanguageContext";
 import { CheckCircle2, Target, Eye, ShieldCheck } from "lucide-react";
 
 const About = () => {
+  const { t } = useLanguage();
+
   return (
     <div className="min-h-screen bg-white">
+      <SEO title={t.nav.find((n: any) => n.href === "/about")?.name || "About"} />
       <Navbar />
       
       {/* Header */}
@@ -18,9 +23,9 @@ const About = () => {
           />
         </div>
         <div className="container mx-auto px-4 relative z-10">
-          <h1 className="text-5xl md:text-6xl font-bold mb-6">About Atcfruit</h1>
+          <h1 className="text-5xl md:text-6xl font-bold mb-6">{t.nav.find((n: any) => n.href === "/about")?.name} Atcfruit</h1>
           <p className="text-xl text-slate-300 max-w-2xl">
-            A legacy of quality and excellence in fruit distribution, powered by strategic logistics in Mersin.
+            {t.hero.subtitle}
           </p>
         </div>
       </section>
@@ -33,27 +38,45 @@ const About = () => {
               <div className="w-14 h-14 bg-emerald-600 text-white rounded-2xl flex items-center justify-center mb-6">
                 <Target size={28} />
               </div>
-              <h3 className="text-2xl font-bold text-slate-900 mb-4">Our Mission</h3>
+              <h3 className="text-2xl font-bold text-slate-900 mb-4">
+                {t.language === 'tr' ? 'Misyonumuz' : t.language === 'ar' ? 'مهمتنا' : 'Our Mission'}
+              </h3>
               <p className="text-slate-600 leading-relaxed">
-                To bridge the gap between global fruit producers and regional consumers by providing efficient, high-quality logistics and distribution services.
+                {t.language === 'tr' 
+                  ? 'Küresel meyve üreticileri ile bölgesel tüketiciler arasındaki boşluğu verimli, yüksek kaliteli lojistik ve dağıtım hizmetleri sunarak doldurmak.' 
+                  : t.language === 'ar' 
+                  ? 'سد الفجوة بين منتجي الفاكهة العالميين والمستهلكين الإقليميين من خلال تقديم خدمات لوجستية وتوزيع فعالة وعالية الجودة.' 
+                  : 'To bridge the gap between global fruit producers and regional consumers by providing efficient, high-quality logistics and distribution services.'}
               </p>
             </div>
             <div className="p-8 rounded-3xl bg-amber-50 border border-amber-100">
               <div className="w-14 h-14 bg-amber-500 text-white rounded-2xl flex items-center justify-center mb-6">
                 <Eye size={28} />
               </div>
-              <h3 className="text-2xl font-bold text-slate-900 mb-4">Our Vision</h3>
+              <h3 className="text-2xl font-bold text-slate-900 mb-4">
+                {t.language === 'tr' ? 'Vizyonumuz' : t.language === 'ar' ? 'رؤيتنا' : 'Our Vision'}
+              </h3>
               <p className="text-slate-600 leading-relaxed">
-                To be the most trusted regional hub for fruit import and re-export, recognized for our commitment to freshness and operational excellence.
+                {t.language === 'tr' 
+                  ? 'Tazelik ve operasyonel mükemmelliğe olan bağlılığımızla tanınan, meyve ithalatı ve re-exportu için en güvenilir bölgesel merkez olmak.' 
+                  : t.language === 'ar' 
+                  ? 'أن نكون المركز الإقليمي الأكثر ثقة لاستيراد وإعادة تصدير الفاكهة، والمعترف به لالتزامنا بالنضارة والتميز التشغيلي.' 
+                  : 'To be the most trusted regional hub for fruit import and re-export, recognized for our commitment to freshness and operational excellence.'}
               </p>
             </div>
             <div className="p-8 rounded-3xl bg-slate-50 border border-slate-100">
               <div className="w-14 h-14 bg-slate-900 text-white rounded-2xl flex items-center justify-center mb-6">
                 <ShieldCheck size={28} />
               </div>
-              <h3 className="text-2xl font-bold text-slate-900 mb-4">Our Values</h3>
+              <h3 className="text-2xl font-bold text-slate-900 mb-4">
+                {t.language === 'tr' ? 'Değerlerimiz' : t.language === 'ar' ? 'قيمنا' : 'Our Values'}
+              </h3>
               <p className="text-slate-600 leading-relaxed">
-                Quality first, integrity in every shipment, and a relentless focus on maintaining the cold chain to ensure customer satisfaction.
+                {t.language === 'tr' 
+                  ? 'Önce kalite, her sevkiyatta dürüstlük ve müşteri memnuniyetini sağlamak için soğuk zinciri korumaya yönelik amansız bir odaklanma.' 
+                  : t.language === 'ar' 
+                  ? 'الجودة أولاً، والنزاهة في كل شحنة، والتركيز المستمر على الحفاظ على سلسلة التبريد لضمان رضا العملاء.' 
+                  : 'Quality first, integrity in every shipment, and a relentless focus on maintaining the cold chain to ensure customer satisfaction.'}
               </p>
             </div>
           </div>
@@ -65,19 +88,22 @@ const About = () => {
         <div className="container mx-auto px-4">
           <div className="flex flex-col lg:flex-row gap-16 items-center">
             <div className="lg:w-1/2 space-y-6">
-              <h2 className="text-3xl md:text-4xl font-bold text-slate-900">Strategic Logistics Excellence</h2>
+              <h2 className="text-3xl md:text-4xl font-bold text-slate-900">
+                {t.language === 'tr' ? 'Stratejik Lojistik Mükemmelliği' : t.language === 'ar' ? 'التميز اللوجستي الاستراتيجي' : 'Strategic Logistics Excellence'}
+              </h2>
               <p className="text-lg text-slate-600 leading-relaxed">
-                Atcfruit is a fruit import, distribution, and re-export company based in Mersin, Turkey. With its strategic location near the Port of Mersin, the company manages the full supply chain process from import and unloading to cold storage, reloading, and regional distribution.
-              </p>
-              <p className="text-lg text-slate-600 leading-relaxed">
-                The company imports high-quality bananas from Ecuador and India, as well as citrus fruits, apples, and pomegranates from South Africa. Products are handled under proper storage conditions and prepared for wholesale distribution and export to different regional markets.
+                {t.language === 'tr' 
+                  ? 'Atcfruit, Mersin, Türkiye merkezli bir meyve ithalat, dağıtım ve re-export şirketidir. Mersin Limanı\'na yakın stratejik konumu ile şirket, ithalat ve tahliyeden soğuk depolamaya, yeniden yüklemeye ve bölgesel dağıtıma kadar tüm tedarik zinciri sürecini yönetmektedir.' 
+                  : t.language === 'ar' 
+                  ? 'Atcfruit هي شركة استيراد وتوزيع وإعادة تصدير فاكهة مقرها في مرسين، تركيا. بفضل موقعها الاستراتيجي بالقرب من ميناء مرسين، تدير الشركة عملية سلسلة التوريد الكاملة من الاستيراد والتفريغ إلى التخزين البارد وإعادة التحميل والتوزيع الإقليمي.' 
+                  : 'Atcfruit is a fruit import, distribution, and re-export company based in Mersin, Turkey. With its strategic location near the Port of Mersin, the company manages the full supply chain process from import and unloading to cold storage, reloading, and regional distribution.'}
               </p>
               <div className="space-y-4 pt-4">
                 {[
-                  "Direct relationships with origin growers",
-                  "Specialized banana ripening control",
-                  "State-of-the-art cold storage facilities",
-                  "Efficient customs and port handling"
+                  t.language === 'tr' ? "Üreticilerle doğrudan ilişkiler" : t.language === 'ar' ? "علاقات مباشرة مع المزارعين" : "Direct relationships with origin growers",
+                  t.language === 'tr' ? "Uzman muz olgunlaştırma kontrolü" : t.language === 'ar' ? "تحكم متخصص في نضج الموز" : "Specialized banana ripening control",
+                  t.language === 'tr' ? "Modern soğuk hava depoları" : t.language === 'ar' ? "مرافق تخزين بارد حديثة" : "State-of-the-art cold storage facilities",
+                  t.language === 'tr' ? "Verimli gümrük ve liman işlemleri" : t.language === 'ar' ? "مناولة فعالة في الميناء والجمارك" : "Efficient customs and port handling"
                 ].map((item) => (
                   <div key={item} className="flex items-center gap-3">
                     <CheckCircle2 className="text-emerald-600" size={20} />

@@ -1,19 +1,28 @@
 import React from "react";
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
+import SEO from "@/components/SEO";
 import ProductCard from "@/components/ProductCard";
-import { products } from "@/data/content";
+import { useLanguage } from "@/context/LanguageContext";
 
 const Products = () => {
+  const { t } = useLanguage();
+  const { products } = t;
+
   return (
     <div className="min-h-screen bg-white">
+      <SEO title={t.nav.find((n: any) => n.href === "/products")?.name || "Products"} />
       <Navbar />
       
       <section className="pt-40 pb-20 bg-emerald-900 text-white">
         <div className="container mx-auto px-4">
-          <h1 className="text-5xl font-bold mb-6">Our Products</h1>
+          <h1 className="text-5xl font-bold mb-6">{t.nav.find((n: any) => n.href === "/products")?.name}</h1>
           <p className="text-xl text-emerald-100 max-w-2xl">
-            Premium fruit selection imported from the world's best origins and distributed with care.
+            {t.language === 'tr' 
+              ? 'Dünyanın en iyi bölgelerinden ithal edilen ve özenle dağıtılan premium meyve seçkisi.' 
+              : t.language === 'ar' 
+              ? 'مجموعة مختارة من الفواكه الفاخرة المستوردة من أفضل المصادر العالمية والموزعة بعناية.' 
+              : 'Premium fruit selection imported from the world\'s best origins and distributed with care.'}
           </p>
         </div>
       </section>
@@ -21,7 +30,7 @@ const Products = () => {
       <section className="py-24">
         <div className="container mx-auto px-4">
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-12">
-            {products.map((product) => (
+            {products.map((product: any) => (
               <ProductCard key={product.id} product={product} />
             ))}
           </div>
@@ -30,22 +39,40 @@ const Products = () => {
 
       <section className="py-24 bg-slate-50">
         <div className="container mx-auto px-4 text-center max-w-3xl">
-          <h2 className="text-3xl font-bold text-slate-900 mb-6">Wholesale & Distribution</h2>
+          <h2 className="text-3xl font-bold text-slate-900 mb-6">
+            {t.language === 'tr' ? 'Toptan Satış ve Dağıtım' : t.language === 'ar' ? 'البيع بالجملة والتوزيع' : 'Wholesale & Distribution'}
+          </h2>
           <p className="text-lg text-slate-600 mb-10">
-            We provide flexible supply solutions for wholesalers, retailers, and regional distributors. Our products are available in various packaging options and ripening stages to meet your specific needs.
+            {t.language === 'tr' 
+              ? 'Toptancılar, perakendeciler ve bölgesel distribütörler için esnek tedarik çözümleri sunuyoruz. Ürünlerimiz, özel ihtiyaçlarınızı karşılamak için çeşitli paketleme seçenekleri ve olgunlaşma aşamalarında mevcuttur.' 
+              : t.language === 'ar' 
+              ? 'نحن نقدم حلول توريد مرنة لتجار الجملة وتجار التجزئة والموزعين الإقليميين. منتجاتنا متوفرة في خيارات تعبئة ومراحل نضج مختلفة لتلبية احتياجاتكم الخاصة.' 
+              : 'We provide flexible supply solutions for wholesalers, retailers, and regional distributors. Our products are available in various packaging options and ripening stages to meet your specific needs.'}
           </p>
           <div className="grid grid-cols-1 sm:grid-cols-3 gap-8">
             <div className="p-6 bg-white rounded-2xl shadow-sm">
-              <div className="text-amber-500 font-bold text-xl mb-2">Bulk Supply</div>
-              <p className="text-sm text-slate-500">Container-level imports for large scale needs.</p>
+              <div className="text-amber-500 font-bold text-xl mb-2">
+                {t.language === 'tr' ? 'Toplu Tedarik' : t.language === 'ar' ? 'توريد بالجملة' : 'Bulk Supply'}
+              </div>
+              <p className="text-sm text-slate-500">
+                {t.language === 'tr' ? 'Büyük ölçekli ihtiyaçlar için konteyner düzeyinde ithalat.' : t.language === 'ar' ? 'استيراد على مستوى الحاويات للاحتياجات الكبيرة.' : 'Container-level imports for large scale needs.'}
+              </p>
             </div>
             <div className="p-6 bg-white rounded-2xl shadow-sm">
-              <div className="text-emerald-600 font-bold text-xl mb-2">Ripening Control</div>
-              <p className="text-sm text-slate-500">Customized ripening for bananas.</p>
+              <div className="text-emerald-600 font-bold text-xl mb-2">
+                {t.language === 'tr' ? 'Olgunlaştırma Kontrolü' : t.language === 'ar' ? 'التحكم في النضج' : 'Ripening Control'}
+              </div>
+              <p className="text-sm text-slate-500">
+                {t.language === 'tr' ? 'Muzlar için özelleştirilmiş olgunlaştırma.' : t.language === 'ar' ? 'نضج مخصص للموز.' : 'Customized ripening for bananas.'}
+              </p>
             </div>
             <div className="p-6 bg-white rounded-2xl shadow-sm">
-              <div className="text-blue-500 font-bold text-xl mb-2">Cold Chain</div>
-              <p className="text-sm text-slate-500">100% refrigerated transport and storage.</p>
+              <div className="text-blue-500 font-bold text-xl mb-2">
+                {t.language === 'tr' ? 'Soğuk Zincir' : t.language === 'ar' ? 'سلسلة التبريد' : 'Cold Chain'}
+              </div>
+              <p className="text-sm text-slate-500">
+                {t.language === 'tr' ? '%100 soğutmalı taşıma ve depolama.' : t.language === 'ar' ? 'نقل وتخزين مبرد بنسبة 100٪.' : '100% refrigerated transport and storage.'}
+              </p>
             </div>
           </div>
         </div>
