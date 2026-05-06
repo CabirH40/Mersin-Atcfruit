@@ -108,5 +108,34 @@ export const content = {
         icon: "Globe",
       },
     ],
+    highlights: [
+      {
+        title: "Strategic Location",
+        description: "Based in Mersin, the gateway to regional fruit distribution.",
+        icon: "MapPin",
+      },
+      {
+        title: "Cold Storage",
+        description: "Advanced climate control to preserve peak freshness.",
+        icon: "ThermometerSnowflake",
+      },
+      {
+        title: "Wide Network",
+        description: "Active distribution across 10+ regional markets.",
+        icon: "Network",
+      },
+      {
+        title: "Fast Delivery",
+        description: "Optimized logistics for rapid turnaround and re-export.",
+        icon: "Zap",
+      },
+    ],
   },
 };
+
+// Exporting top-level constants for component compatibility
+export const navLinks = content.en.nav;
+export const products = content.en.products;
+export const markets = content.en.markets.countries;
+export const processSteps = content.en.process;
+export const highlights = content.en.highlights;
