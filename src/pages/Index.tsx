@@ -4,6 +4,7 @@ import Hero from "@/components/Hero";
 import Highlights from "@/components/Highlights";
 import ProductCard from "@/components/ProductCard";
 import ProcessTimeline from "@/components/ProcessTimeline";
+import QualitySection from "@/components/QualitySection";
 import Footer from "@/components/Footer";
 import { products, markets, siteConfig } from "@/data/content";
 import { Button } from "@/components/ui/button";
@@ -91,6 +92,8 @@ const Index = () => {
           </div>
         </div>
       </section>
+
+      <QualitySection />
 
       {/* Markets Section */}
       <section className="py-24 bg-emerald-900 text-white overflow-hidden relative">

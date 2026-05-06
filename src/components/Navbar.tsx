@@ -4,6 +4,7 @@ import { Menu, X, Phone } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { navLinks, siteConfig } from "@/data/content";
 import { cn } from "@/lib/utils";
+import LanguageSwitcher from "./LanguageSwitcher";
 
 const Navbar = () => {
   const [isOpen, setIsOpen] = useState(false);
@@ -36,7 +37,7 @@ const Navbar = () => {
         </Link>
 
         {/* Desktop Menu */}
-        <div className="hidden md:flex items-center gap-8">
+        <div className="hidden md:flex items-center gap-6 lg:gap-8">
           {navLinks.map((link) => (
             <Link
               key={link.name}
@@ -51,21 +52,28 @@ const Navbar = () => {
               {link.name}
             </Link>
           ))}
-          <Button asChild className="bg-emerald-600 hover:bg-emerald-700 text-white rounded-full px-6">
-            <Link to="/contact">Get in Touch</Link>
-          </Button>
+          
+          <div className="flex items-center gap-4 border-l border-slate-200/20 pl-6">
+            <LanguageSwitcher scrolled={scrolled} />
+            <Button asChild className="bg-emerald-600 hover:bg-emerald-700 text-white rounded-full px-6">
+              <Link to="/contact">Get in Touch</Link>
+            </Button>
+          </div>
         </div>
 
         {/* Mobile Toggle */}
-        <button
-          className={cn(
-            "md:hidden p-2 rounded-md",
-            scrolled ? "text-slate-900" : "text-white"
-          )}
-          onClick={() => setIsOpen(!isOpen)}
-        >
-          {isOpen ? <X size={24} /> : <Menu size={24} />}
-        </button>
+        <div className="flex items-center gap-4 md:hidden">
+          <LanguageSwitcher scrolled={scrolled} />
+          <button
+            className={cn(
+              "p-2 rounded-md",
+              scrolled ? "text-slate-900" : "text-white"
+            )}
+            onClick={() => setIsOpen(!isOpen)}
+          >
+            {isOpen ? <X size={24} /> : <Menu size={24} />}
+          </button>
+        </div>
       </div>
 
       {/* Mobile Menu */}
