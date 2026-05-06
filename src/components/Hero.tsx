@@ -6,8 +6,34 @@ import { useLanguage } from "@/context/LanguageContext";
 import { motion } from "framer-motion";
 
 const Hero = () => {
-  const { t } = useLanguage();
+  const { t, language } = useLanguage();
   const { hero } = t;
+
+  // Robust title rendering for different languages
+  const renderTitle = () => {
+    if (language === 'en') {
+      return (
+        <>
+          Fresh Fruit <span className="text-emerald-500">Import</span> & <span className="text-amber-500">Distribution</span>
+        </>
+      );
+    }
+    if (language === 'tr') {
+      return (
+        <>
+          Taze Meyve <span className="text-emerald-500">İthalatı</span> ve <span className="text-amber-500">Dağıtımı</span>
+        </>
+      );
+    }
+    if (language === 'ar') {
+      return (
+        <>
+          <span className="text-emerald-500">استيراد</span> وتوزيع <span className="text-amber-500">الفاكهة</span> الطازجة
+        </>
+      );
+    }
+    return hero.title;
+  };
 
   return (
     <section className="relative min-h-[90vh] flex items-center pt-20 overflow-hidden">
@@ -36,7 +62,7 @@ const Hero = () => {
           </div>
           
           <h1 className="text-5xl md:text-7xl lg:text-8xl font-bold text-white leading-[1.1] mb-8 tracking-tight">
-            {hero.title.split('Import')[0]} <span className="text-emerald-500">Import</span> & <span className="text-amber-500">Distribution</span>
+            {renderTitle()}
           </h1>
           
           <p className="text-xl md:text-2xl text-slate-300 mb-12 leading-relaxed max-w-2xl font-light">

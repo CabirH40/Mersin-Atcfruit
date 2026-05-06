@@ -6,8 +6,7 @@ import { useLanguage } from "@/context/LanguageContext";
 
 const Footer = () => {
   const { t } = useLanguage();
-  const navLinks = t.nav;
-  const products = t.products;
+  const { footer, nav: navLinks, products } = t;
 
   return (
     <footer className="bg-slate-900 text-slate-300 pt-20 pb-10">
@@ -39,7 +38,7 @@ const Footer = () => {
           {/* Quick Links */}
           <div>
             <h4 className="text-white font-bold text-lg mb-6">
-              {t.language === 'tr' ? 'Hızlı Bağlantılar' : t.language === 'ar' ? 'روابط سريعة' : 'Quick Links'}
+              {footer.quickLinks}
             </h4>
             <ul className="space-y-4">
               {navLinks.map((link: any) => (
@@ -55,7 +54,7 @@ const Footer = () => {
           {/* Products */}
           <div>
             <h4 className="text-white font-bold text-lg mb-6">
-              {t.language === 'tr' ? 'Ürünlerimiz' : t.language === 'ar' ? 'منتجاتنا' : 'Our Products'}
+              {footer.products}
             </h4>
             <ul className="space-y-4">
               {products.map((product: any) => (
@@ -71,7 +70,7 @@ const Footer = () => {
           {/* Contact Info */}
           <div>
             <h4 className="text-white font-bold text-lg mb-6">
-              {t.language === 'tr' ? 'İletişim' : t.language === 'ar' ? 'اتصل بنا' : 'Contact Us'}
+              {footer.contact}
             </h4>
             <ul className="space-y-4">
               <li className="flex items-start gap-3">
@@ -91,10 +90,10 @@ const Footer = () => {
         </div>
 
         <div className="pt-8 border-t border-slate-800 flex flex-col md:flex-row justify-between items-center gap-4 text-sm text-slate-500">
-          <p>© {new Date().getFullYear()} Atcfruit. All rights reserved.</p>
+          <p>© {new Date().getFullYear()} Atcfruit. {footer.rights}</p>
           <div className="flex gap-8">
-            <a href="#" className="hover:text-white transition-colors">Privacy Policy</a>
-            <a href="#" className="hover:text-white transition-colors">Terms of Service</a>
+            <a href="#" className="hover:text-white transition-colors">{footer.privacy}</a>
+            <a href="#" className="hover:text-white transition-colors">{footer.terms}</a>
           </div>
         </div>
       </div>

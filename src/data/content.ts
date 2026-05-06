@@ -24,7 +24,7 @@ export const content = {
     hero: {
       badge: "Strategic Logistics Hub",
       title: "Fresh Fruit Import & Distribution",
-      subtitle: "Atcfruit is a Mersin-based fruit import and distribution company specializing in bananas, citrus fruits, apples, and pomegranates, with cold storage and fast re-export solutions.",
+      subtitle: "Atcfruit is a Mersin-based fruit import and distribution company specializing in bananas, citrus fruits, apples, and pomegranates with cold storage and regional re-export solutions.",
       ctaPrimary: "Explore Products",
       ctaSecondary: "Contact Us",
     },
@@ -90,6 +90,37 @@ export const content = {
       { title: "Wide Network", description: "Active distribution across 10+ regional markets.", icon: "Network" },
       { title: "Fast Delivery", description: "Optimized logistics for rapid turnaround.", icon: "Zap" },
     ],
+    whyChooseUs: {
+      badge: "The Atcfruit Advantage",
+      title: "Why Industry Leaders Trust Us",
+      subtitle: "We combine strategic location, advanced technology, and decades of expertise to deliver excellence in every container.",
+      reasons: [
+        { title: "Quality Assurance", description: "Rigorous inspection protocols at every stage of the supply chain." },
+        { title: "24/7 Operations", description: "Strategic location at the Port of Mersin allows for round-the-clock handling." },
+        { title: "Global Sourcing", description: "Direct partnerships with premium growers in Ecuador, India, and South Africa." },
+        { title: "Fast Re-export", description: "Optimized logistics flow designed for speed and efficiency." },
+        { title: "Expert Ripening", description: "State-of-the-art ripening rooms specifically designed for bananas." },
+        { title: "Dedicated Support", description: "A professional team committed to providing personalized service." }
+      ]
+    },
+    quality: {
+      title: "Uncompromising Standards in Freshness",
+      subtitle: "At Atcfruit, we understand that quality is a race against time. Our infrastructure is designed to preserve the natural integrity of every fruit we handle.",
+      features: [
+        { title: "Precision Cooling", desc: "Advanced climate control systems for each fruit variety." },
+        { title: "Quality Assurance", desc: "Rigorous inspection protocols at every stage." },
+        { title: "Fast Turnaround", desc: "Optimized port operations to minimize time." },
+        { title: "Freshness Guaranteed", desc: "Direct-from-origin sourcing ensures maximum shelf life." }
+      ]
+    },
+    footer: {
+      quickLinks: "Quick Links",
+      products: "Our Products",
+      contact: "Contact Us",
+      rights: "All rights reserved.",
+      privacy: "Privacy Policy",
+      terms: "Terms of Service"
+    }
   },
   tr: {
     nav: [
@@ -169,6 +200,37 @@ export const content = {
       { title: "Geniş Ağ", description: "10'dan fazla bölgesel pazarda aktif dağıtım.", icon: "Network" },
       { title: "Hızlı Teslimat", description: "Hızlı geri dönüş için optimize edilmiş lojistik.", icon: "Zap" },
     ],
+    whyChooseUs: {
+      badge: "Atcfruit Avantajı",
+      title: "Neden Sektör Liderleri Bize Güveniyor",
+      subtitle: "Her konteynerde mükemmelliği sunmak için stratejik konumu, ileri teknolojiyi ve onlarca yıllık uzmanlığı birleştiriyoruz.",
+      reasons: [
+        { title: "Kalite Güvencesi", description: "Tedarik zincirinin her aşamasında titiz denetim protokolleri." },
+        { title: "7/24 Operasyon", description: "Mersin Limanı'ndaki stratejik konumumuz günün her saati işlem yapmamızı sağlar." },
+        { title: "Küresel Tedarik", description: "Ekvador, Hindistan ve Güney Afrika'daki premium üreticilerle doğrudan ortaklıklar." },
+        { title: "Hızlı Re-export", description: "Hız ve verimlilik için tasarlanmış optimize edilmiş lojistik akışı." },
+        { title: "Uzman Olgunlaştırma", description: "Muzlar için özel olarak tasarlanmış son teknoloji olgunlaştırma odaları." },
+        { title: "Özel Destek", description: "Kişiselleştirilmiş hizmet sunmaya kendini adamış profesyonel bir ekip." }
+      ]
+    },
+    quality: {
+      title: "Tazelikte Tavizsiz Standartlar",
+      subtitle: "Atcfruit'te kalitenin zamana karşı bir yarış olduğunu biliyoruz. Altyapımız, her meyvenin doğal bütünlüğünü korumak için tasarlanmıştır.",
+      features: [
+        { title: "Hassas Soğutma", desc: "Her meyve çeşidi için gelişmiş iklim kontrol sistemleri." },
+        { title: "Kalite Güvencesi", desc: "Her aşamada titiz denetim protokolleri." },
+        { title: "Hızlı Geri Dönüş", desc: "Süreyi en aza indirmek için optimize edilmiş liman operasyonları." },
+        { title: "Tazelik Garantisi", desc: "Kaynaktan doğrudan tedarik, maksimum raf ömrü sağlar." }
+      ]
+    },
+    footer: {
+      quickLinks: "Hızlı Bağlantılar",
+      products: "Ürünlerimiz",
+      contact: "Bize Ulaşın",
+      rights: "Tüm hakları saklıdır.",
+      privacy: "Gizlilik Politikası",
+      terms: "Kullanım Şartları"
+    }
   },
   ar: {
     nav: [
@@ -248,6 +310,37 @@ export const content = {
       { title: "شبكة واسعة", description: "توزيع نشط عبر أكثر من 10 أسواق إقليمية.", icon: "Network" },
       { title: "تسليم سريع", description: "خدمات لوجستية محسنة لسرعة الإنجاز.", icon: "Zap" },
     ],
+    whyChooseUs: {
+      badge: "ميزة Atcfruit",
+      title: "لماذا يثق بنا قادة الصناعة",
+      subtitle: "نحن نجمع بين الموقع الاستراتيجي والتكنولوجيا المتقدمة وعقود من الخبرة لتقديم التميز في كل حاوية.",
+      reasons: [
+        { title: "ضمان الجودة", description: "بروتوكولات تفتيش صارمة في كل مرحلة من مراحل سلسلة التوريد." },
+        { title: "عمليات 24/7", description: "موقعنا الاستراتيجي في ميناء مرسين يسمح بالمناولة على مدار الساعة." },
+        { title: "مصادر عالمية", description: "شراكات مباشرة مع مزارعين متميزين في الإكوادور والهند وجنوب أفريقيا." },
+        { title: "إعادة تصدير سريعة", description: "تدفق لوجستي محسن مصمم للسرعة والكفاءة." },
+        { title: "إنضاج خبير", description: "غرف إنضاج حديثة مصممة خصيصاً للموز." },
+        { title: "دعم مخصص", description: "فريق محترف ملتزم بتقديم خدمة شخصية." }
+      ]
+    },
+    quality: {
+      title: "معايير لا تهاون فيها في النضارة",
+      subtitle: "في Atcfruit، ندرك أن الجودة هي سباق مع الزمن. تم تصميم بنيتنا التحتية للحفاظ على السلامة الطبيعية لكل فاكهة نتعامل معها.",
+      features: [
+        { title: "تبريد دقيق", desc: "أنظمة تحكم متقدمة في المناخ لكل نوع من أنواع الفاكهة." },
+        { title: "ضمان الجودة", desc: "بروتوكولات تفتيش صارمة في كل مرحلة." },
+        { title: "إنجاز سريع", desc: "عمليات ميناء محسنة لتقليل الوقت." },
+        { title: "نضارة مضمونة", desc: "المصادر المباشرة من المنشأ تضمن أقصى مدة صلاحية." }
+      ]
+    },
+    footer: {
+      quickLinks: "روابط سريعة",
+      products: "منتجاتنا",
+      contact: "اتصل بنا",
+      rights: "جميع الحقوق محفوظة.",
+      privacy: "سياسة الخصوصية",
+      terms: "شروط الخدمة"
+    }
   },
 };
 

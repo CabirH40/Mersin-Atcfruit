@@ -1,29 +1,17 @@
 import React from "react";
 import { ShieldCheck, Thermometer, Zap, Clock } from "lucide-react";
 import { motion } from "framer-motion";
+import { useLanguage } from "@/context/LanguageContext";
 
 const QualitySection = () => {
-  const features = [
-    {
-      icon: <Thermometer className="text-emerald-600" />,
-      title: "Precision Cooling",
-      desc: "Advanced climate control systems maintaining optimal temperatures for each fruit variety."
-    },
-    {
-      icon: <ShieldCheck className="text-emerald-600" />,
-      title: "Quality Assurance",
-      desc: "Rigorous inspection protocols at every stage of the supply chain."
-    },
-    {
-      icon: <Zap className="text-emerald-600" />,
-      title: "Fast Turnaround",
-      desc: "Optimized port operations to minimize time between arrival and distribution."
-    },
-    {
-      icon: <Clock className="text-emerald-600" />,
-      title: "Freshness Guaranteed",
-      desc: "Direct-from-origin sourcing ensures maximum shelf life for our partners."
-    }
+  const { t } = useLanguage();
+  const { quality } = t;
+
+  const iconMap = [
+    <Thermometer className="text-emerald-600" />,
+    <ShieldCheck className="text-emerald-600" />,
+    <Zap className="text-emerald-600" />,
+    <Clock className="text-emerald-600" />,
   ];
 
   return (
@@ -47,15 +35,15 @@ const QualitySection = () => {
           <div className="relative z-10 p-8 md:p-16 lg:p-24">
             <div className="max-w-3xl mb-16">
               <h2 className="text-3xl md:text-5xl font-bold text-white mb-6">
-                Uncompromising Standards in <span className="text-emerald-400">Freshness</span>
+                {quality.title.split('Freshness')[0]} <span className="text-emerald-400">{t.language === 'tr' ? 'Tazelikte' : t.language === 'ar' ? 'النضارة' : 'Freshness'}</span> {quality.title.split('Freshness')[1]}
               </h2>
               <p className="text-lg text-slate-300 leading-relaxed">
-                At Atcfruit, we understand that quality is a race against time. Our infrastructure is designed to preserve the natural integrity of every fruit we handle.
+                {quality.subtitle}
               </p>
             </div>
 
             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
-              {features.map((f, i) => (
+              {quality.features.map((f: any, i: number) => (
                 <motion.div 
                   key={i} 
                   initial={{ opacity: 0, y: 20 }}
@@ -65,7 +53,7 @@ const QualitySection = () => {
                   className="bg-white/10 backdrop-blur-md border border-white/10 p-8 rounded-3xl hover:bg-white/20 transition-colors"
                 >
                   <div className="w-12 h-12 bg-white rounded-2xl flex items-center justify-center mb-6">
-                    {f.icon}
+                    {iconMap[i]}
                   </div>
                   <h4 className="text-xl font-bold text-white mb-3">{f.title}</h4>
                   <p className="text-sm text-slate-300 leading-relaxed">{f.desc}</p>
