@@ -4,6 +4,7 @@ import Footer from "@/components/Footer";
 import SEO from "@/components/SEO";
 import { useLanguage } from "@/context/LanguageContext";
 import { CheckCircle2, Target, Eye, ShieldCheck } from "lucide-react";
+import { motion } from "framer-motion";
 
 const About = () => {
   const { t } = useLanguage();
@@ -23,10 +24,16 @@ const About = () => {
           />
         </div>
         <div className="container mx-auto px-4 relative z-10">
-          <h1 className="text-5xl md:text-6xl font-bold mb-6">{t.nav.find((n: any) => n.href === "/about")?.name} Atcfruit</h1>
-          <p className="text-xl text-slate-300 max-w-2xl">
-            {t.hero.subtitle}
-          </p>
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.6 }}
+          >
+            <h1 className="text-5xl md:text-6xl font-bold mb-6">{t.nav.find((n: any) => n.href === "/about")?.name} Atcfruit</h1>
+            <p className="text-xl text-slate-300 max-w-2xl">
+              {t.hero.subtitle}
+            </p>
+          </motion.div>
         </div>
       </section>
 
@@ -34,51 +41,56 @@ const About = () => {
       <section className="py-24">
         <div className="container mx-auto px-4">
           <div className="grid grid-cols-1 md:grid-cols-3 gap-12">
-            <div className="p-8 rounded-3xl bg-emerald-50 border border-emerald-100">
-              <div className="w-14 h-14 bg-emerald-600 text-white rounded-2xl flex items-center justify-center mb-6">
-                <Target size={28} />
-              </div>
-              <h3 className="text-2xl font-bold text-slate-900 mb-4">
-                {t.language === 'tr' ? 'Misyonumuz' : t.language === 'ar' ? 'مهمتنا' : 'Our Mission'}
-              </h3>
-              <p className="text-slate-600 leading-relaxed">
-                {t.language === 'tr' 
+            {[
+              {
+                icon: <Target size={28} />,
+                title: t.language === 'tr' ? 'Misyonumuz' : t.language === 'ar' ? 'مهمتنا' : 'Our Mission',
+                desc: t.language === 'tr' 
                   ? 'Küresel meyve üreticileri ile bölgesel tüketiciler arasındaki boşluğu verimli, yüksek kaliteli lojistik ve dağıtım hizmetleri sunarak doldurmak.' 
                   : t.language === 'ar' 
                   ? 'سد الفجوة بين منتجي الفاكهة العالميين والمستهلكين الإقليميين من خلال تقديم خدمات لوجستية وتوزيع فعالة وعالية الجودة.' 
-                  : 'To bridge the gap between global fruit producers and regional consumers by providing efficient, high-quality logistics and distribution services.'}
-              </p>
-            </div>
-            <div className="p-8 rounded-3xl bg-amber-50 border border-amber-100">
-              <div className="w-14 h-14 bg-amber-500 text-white rounded-2xl flex items-center justify-center mb-6">
-                <Eye size={28} />
-              </div>
-              <h3 className="text-2xl font-bold text-slate-900 mb-4">
-                {t.language === 'tr' ? 'Vizyonumuz' : t.language === 'ar' ? 'رؤيتنا' : 'Our Vision'}
-              </h3>
-              <p className="text-slate-600 leading-relaxed">
-                {t.language === 'tr' 
+                  : 'To bridge the gap between global fruit producers and regional consumers by providing efficient, high-quality logistics and distribution services.',
+                color: "bg-emerald-50 border-emerald-100",
+                iconBg: "bg-emerald-600"
+              },
+              {
+                icon: <Eye size={28} />,
+                title: t.language === 'tr' ? 'Vizyonumuz' : t.language === 'ar' ? 'رؤيتنا' : 'Our Vision',
+                desc: t.language === 'tr' 
                   ? 'Tazelik ve operasyonel mükemmelliğe olan bağlılığımızla tanınan, meyve ithalatı ve re-exportu için en güvenilir bölgesel merkez olmak.' 
                   : t.language === 'ar' 
                   ? 'أن نكون المركز الإقليمي الأكثر ثقة لاستيراد وإعادة تصدير الفاكهة، والمعترف به لالتزامنا بالنضارة والتميز التشغيلي.' 
-                  : 'To be the most trusted regional hub for fruit import and re-export, recognized for our commitment to freshness and operational excellence.'}
-              </p>
-            </div>
-            <div className="p-8 rounded-3xl bg-slate-50 border border-slate-100">
-              <div className="w-14 h-14 bg-slate-900 text-white rounded-2xl flex items-center justify-center mb-6">
-                <ShieldCheck size={28} />
-              </div>
-              <h3 className="text-2xl font-bold text-slate-900 mb-4">
-                {t.language === 'tr' ? 'Değerlerimiz' : t.language === 'ar' ? 'قيمنا' : 'Our Values'}
-              </h3>
-              <p className="text-slate-600 leading-relaxed">
-                {t.language === 'tr' 
+                  : 'To be the most trusted regional hub for fruit import and re-export, recognized for our commitment to freshness and operational excellence.',
+                color: "bg-amber-50 border-amber-100",
+                iconBg: "bg-amber-500"
+              },
+              {
+                icon: <ShieldCheck size={28} />,
+                title: t.language === 'tr' ? 'Değerlerimiz' : t.language === 'ar' ? 'قيمنا' : 'Our Values',
+                desc: t.language === 'tr' 
                   ? 'Önce kalite, her sevkiyatta dürüstlük ve müşteri memnuniyetini sağlamak için soğuk zinciri korumaya yönelik amansız bir odaklanma.' 
                   : t.language === 'ar' 
                   ? 'الجودة أولاً، والنزاهة في كل شحنة، والتركيز المستمر على الحفاظ على سلسلة التبريد لضمان رضا العملاء.' 
-                  : 'Quality first, integrity in every shipment, and a relentless focus on maintaining the cold chain to ensure customer satisfaction.'}
-              </p>
-            </div>
+                  : 'Quality first, integrity in every shipment, and a relentless focus on maintaining the cold chain to ensure customer satisfaction.',
+                color: "bg-slate-50 border-slate-100",
+                iconBg: "bg-slate-900"
+              }
+            ].map((item, i) => (
+              <motion.div 
+                key={i}
+                initial={{ opacity: 0, y: 30 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }}
+                transition={{ delay: i * 0.1, duration: 0.5 }}
+                className={`p-8 rounded-3xl border ${item.color}`}
+              >
+                <div className={`w-14 h-14 ${item.iconBg} text-white rounded-2xl flex items-center justify-center mb-6`}>
+                  {item.icon}
+                </div>
+                <h3 className="text-2xl font-bold text-slate-900 mb-4">{item.title}</h3>
+                <p className="text-slate-600 leading-relaxed">{item.desc}</p>
+              </motion.div>
+            ))}
           </div>
         </div>
       </section>
@@ -87,7 +99,13 @@ const About = () => {
       <section className="py-24 bg-slate-50">
         <div className="container mx-auto px-4">
           <div className="flex flex-col lg:flex-row gap-16 items-center">
-            <div className="lg:w-1/2 space-y-6">
+            <motion.div 
+              initial={{ opacity: 0, x: -30 }}
+              whileInView={{ opacity: 1, x: 0 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.6 }}
+              className="lg:w-1/2 space-y-6"
+            >
               <h2 className="text-3xl md:text-4xl font-bold text-slate-900">
                 {t.language === 'tr' ? 'Stratejik Lojistik Mükemmelliği' : t.language === 'ar' ? 'التميز اللوجستي الاستراتيجي' : 'Strategic Logistics Excellence'}
               </h2>
@@ -111,21 +129,27 @@ const About = () => {
                   </div>
                 ))}
               </div>
-            </div>
-            <div className="lg:w-1/2">
+            </motion.div>
+            <motion.div 
+              initial={{ opacity: 0, x: 30 }}
+              whileInView={{ opacity: 1, x: 0 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.6 }}
+              className="lg:w-1/2"
+            >
               <div className="grid grid-cols-2 gap-4">
                 <img 
                   src="https://images.unsplash.com/photo-1580674285054-bed31e145f59?auto=format&fit=crop&q=80&w=600" 
-                  className="rounded-2xl h-64 w-full object-cover"
+                  className="rounded-2xl h-64 w-full object-cover shadow-lg"
                   alt="Fruit Quality"
                 />
                 <img 
                   src="https://images.unsplash.com/photo-1566576721346-d4a3b4eaeb55?auto=format&fit=crop&q=80&w=600" 
-                  className="rounded-2xl h-64 w-full object-cover mt-8"
+                  className="rounded-2xl h-64 w-full object-cover mt-8 shadow-lg"
                   alt="Logistics"
                 />
               </div>
-            </div>
+            </motion.div>
           </div>
         </div>
       </section>
