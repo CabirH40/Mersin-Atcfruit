@@ -1,10 +1,11 @@
 import React from "react";
-import { MapPin, Globe2, ArrowUpRight } from "lucide-react";
-import { content } from "@/data/content";
+import { MapPin, ArrowUpRight } from "lucide-react";
 import { Badge } from "@/components/ui/badge";
+import { useLanguage } from "@/context/LanguageContext";
 
 const MarketMap = () => {
-  const { markets } = content.en;
+  const { t } = useLanguage();
+  const { markets } = t;
 
   return (
     <section className="py-32 bg-slate-950 text-white overflow-hidden relative">
@@ -21,17 +22,17 @@ const MarketMap = () => {
         <div className="flex flex-col lg:flex-row items-center gap-20">
           <div className="lg:w-1/2 space-y-8">
             <Badge className="bg-emerald-500/20 text-emerald-400 border-emerald-500/30 px-4 py-1 text-sm">
-              Global Reach
+              {t.language === 'tr' ? 'Küresel Erişim' : t.language === 'ar' ? 'وصول عالمي' : 'Global Reach'}
             </Badge>
             <h2 className="text-4xl md:text-6xl font-bold leading-tight">
-              Strategic <span className="text-amber-500">Regional</span> Distribution
+              {markets.title.split('Regional')[0]} <span className="text-amber-500">{t.language === 'tr' ? 'Bölgesel' : t.language === 'ar' ? 'إقليمي' : 'Regional'}</span> {markets.title.split('Regional')[1] || 'Distribution'}
             </h2>
             <p className="text-xl text-slate-400 leading-relaxed">
               {markets.subtitle}
             </p>
             
             <div className="grid grid-cols-2 gap-4">
-              {markets.countries.map((country) => (
+              {markets.countries.map((country: string) => (
                 <div key={country} className="group flex items-center justify-between p-4 bg-white/5 rounded-2xl border border-white/10 hover:bg-white/10 transition-all cursor-default">
                   <div className="flex items-center gap-3">
                     <div className="w-2 h-2 bg-emerald-500 rounded-full shadow-[0_0_10px_rgba(16,185,129,0.5)]" />
@@ -53,7 +54,9 @@ const MarketMap = () => {
                   <div className="w-48 h-48 bg-emerald-600 rounded-full flex flex-col items-center justify-center shadow-[0_0_60px_rgba(16,185,129,0.4)] relative z-10 border-4 border-white/10">
                     <MapPin size={40} className="mb-2 text-amber-400" />
                     <span className="font-black text-2xl tracking-tighter">MERSIN</span>
-                    <span className="text-[10px] font-bold uppercase tracking-[0.2em] text-emerald-100">Central Hub</span>
+                    <span className="text-[10px] font-bold uppercase tracking-[0.2em] text-emerald-100">
+                      {t.language === 'tr' ? 'Merkez Hub' : t.language === 'ar' ? 'المركز الرئيسي' : 'Central Hub'}
+                    </span>
                   </div>
                 </div>
               </div>

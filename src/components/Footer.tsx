@@ -1,9 +1,14 @@
 import React from "react";
 import { Link } from "react-router-dom";
 import { Mail, Phone, MapPin, Facebook, Instagram, Linkedin } from "lucide-react";
-import { siteConfig, navLinks, products } from "@/data/content";
+import { siteConfig } from "@/data/content";
+import { useLanguage } from "@/context/LanguageContext";
 
 const Footer = () => {
+  const { t } = useLanguage();
+  const navLinks = t.nav;
+  const products = t.products;
+
   return (
     <footer className="bg-slate-900 text-slate-300 pt-20 pb-10">
       <div className="container mx-auto px-4">
@@ -16,7 +21,7 @@ const Footer = () => {
               </span>
             </Link>
             <p className="text-slate-400 leading-relaxed">
-              Strategic fruit import and distribution hub based in Mersin, Turkey. Connecting global growers with regional markets through excellence in logistics.
+              {t.hero.subtitle}
             </p>
             <div className="flex gap-4">
               <a href="#" className="w-10 h-10 rounded-full bg-slate-800 flex items-center justify-center hover:bg-emerald-600 transition-colors">
@@ -33,9 +38,11 @@ const Footer = () => {
 
           {/* Quick Links */}
           <div>
-            <h4 className="text-white font-bold text-lg mb-6">Quick Links</h4>
+            <h4 className="text-white font-bold text-lg mb-6">
+              {t.language === 'tr' ? 'Hızlı Bağlantılar' : t.language === 'ar' ? 'روابط سريعة' : 'Quick Links'}
+            </h4>
             <ul className="space-y-4">
-              {navLinks.map((link) => (
+              {navLinks.map((link: any) => (
                 <li key={link.name}>
                   <Link to={link.href} className="hover:text-amber-500 transition-colors">
                     {link.name}
@@ -47,9 +54,11 @@ const Footer = () => {
 
           {/* Products */}
           <div>
-            <h4 className="text-white font-bold text-lg mb-6">Our Products</h4>
+            <h4 className="text-white font-bold text-lg mb-6">
+              {t.language === 'tr' ? 'Ürünlerimiz' : t.language === 'ar' ? 'منتجاتنا' : 'Our Products'}
+            </h4>
             <ul className="space-y-4">
-              {products.map((product) => (
+              {products.map((product: any) => (
                 <li key={product.id}>
                   <Link to="/products" className="hover:text-amber-500 transition-colors">
                     {product.name}
@@ -61,7 +70,9 @@ const Footer = () => {
 
           {/* Contact Info */}
           <div>
-            <h4 className="text-white font-bold text-lg mb-6">Contact Us</h4>
+            <h4 className="text-white font-bold text-lg mb-6">
+              {t.language === 'tr' ? 'İletişim' : t.language === 'ar' ? 'اتصل بنا' : 'Contact Us'}
+            </h4>
             <ul className="space-y-4">
               <li className="flex items-start gap-3">
                 <MapPin className="text-emerald-500 shrink-0 mt-1" size={18} />

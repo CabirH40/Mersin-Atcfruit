@@ -1,6 +1,6 @@
 import React from "react";
 import { Ship, Anchor, Snowflake, Truck, Globe } from "lucide-react";
-import { processSteps } from "@/data/content";
+import { useLanguage } from "@/context/LanguageContext";
 
 const iconMap = {
   Ship: Ship,
@@ -11,13 +11,16 @@ const iconMap = {
 };
 
 const ProcessTimeline = () => {
+  const { t } = useLanguage();
+  const processSteps = t.process;
+
   return (
     <div className="relative">
       {/* Desktop Line */}
       <div className="hidden lg:block absolute top-12 left-0 right-0 h-0.5 bg-slate-200 z-0" />
       
       <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-5 gap-12 relative z-10">
-        {processSteps.map((step, index) => {
+        {processSteps.map((step: any, index: number) => {
           const Icon = iconMap[step.icon as keyof typeof iconMap];
           return (
             <div key={index} className="flex flex-col items-center text-center group">

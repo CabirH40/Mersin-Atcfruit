@@ -2,14 +2,17 @@ import React, { useState, useEffect } from "react";
 import { Link, useLocation } from "react-router-dom";
 import { Menu, X, Phone } from "lucide-react";
 import { Button } from "@/components/ui/button";
-import { navLinks, siteConfig } from "@/data/content";
+import { siteConfig } from "@/data/content";
 import { cn } from "@/lib/utils";
 import LanguageSwitcher from "./LanguageSwitcher";
+import { useLanguage } from "@/context/LanguageContext";
 
 const Navbar = () => {
   const [isOpen, setIsOpen] = useState(false);
   const [scrolled, setScrolled] = useState(false);
   const location = useLocation();
+  const { t } = useLanguage();
+  const navLinks = t.nav;
 
   useEffect(() => {
     const handleScroll = () => setScrolled(window.scrollY > 20);
@@ -38,7 +41,7 @@ const Navbar = () => {
 
         {/* Desktop Menu */}
         <div className="hidden md:flex items-center gap-6 lg:gap-8">
-          {navLinks.map((link) => (
+          {navLinks.map((link: any) => (
             <Link
               key={link.name}
               to={link.href}
@@ -56,7 +59,7 @@ const Navbar = () => {
           <div className="flex items-center gap-4 border-l border-slate-200/20 pl-6">
             <LanguageSwitcher scrolled={scrolled} />
             <Button asChild className="bg-emerald-600 hover:bg-emerald-700 text-white rounded-full px-6">
-              <Link to="/contact">Get in Touch</Link>
+              <Link to="/contact">{t.hero.ctaSecondary}</Link>
             </Button>
           </div>
         </div>
@@ -84,7 +87,7 @@ const Navbar = () => {
         )}
       >
         <div className="flex flex-col p-6 gap-6">
-          {navLinks.map((link) => (
+          {navLinks.map((link: any) => (
             <Link
               key={link.name}
               to={link.href}
@@ -96,7 +99,7 @@ const Navbar = () => {
           ))}
           <div className="mt-4 flex flex-col gap-4">
             <Button asChild className="w-full bg-emerald-600 py-6 text-lg">
-              <Link to="/contact" onClick={() => setIsOpen(false)}>Contact Us</Link>
+              <Link to="/contact" onClick={() => setIsOpen(false)}>{t.hero.ctaSecondary}</Link>
             </Button>
             <a 
               href={`tel:${siteConfig.contact.phone}`}
