@@ -1,27 +1,33 @@
 import React from "react";
 import { Link } from "react-router-dom";
-import { ArrowRight, Play } from "lucide-react";
+import { ArrowRight } from "lucide-react";
 import { Button } from "@/components/ui/button";
-import { content } from "@/data/content";
+import { useLanguage } from "@/context/LanguageContext";
+import { motion } from "framer-motion";
 
 const Hero = () => {
-  const { hero } = content.en;
+  const { t } = useLanguage();
+  const { hero } = t;
 
   return (
     <section className="relative min-h-[90vh] flex items-center pt-20 overflow-hidden">
-      {/* Background with subtle zoom effect */}
       <div className="absolute inset-0 z-0">
         <img
           src="https://images.unsplash.com/photo-1586528116311-ad8dd3c8310d?auto=format&fit=crop&q=80&w=2000"
           alt="Atcfruit Logistics"
-          className="w-full h-full object-cover scale-105 animate-subtle-zoom"
+          className="w-full h-full object-cover scale-105"
         />
         <div className="absolute inset-0 bg-gradient-to-r from-slate-950 via-slate-900/80 to-transparent" />
       </div>
 
       <div className="container mx-auto px-4 relative z-10">
-        <div className="max-w-4xl">
-          <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-emerald-500/10 border border-emerald-500/20 text-emerald-400 text-sm font-semibold tracking-wide mb-8 animate-fade-in">
+        <motion.div 
+          initial={{ opacity: 0, y: 30 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.8, ease: "easeOut" }}
+          className="max-w-4xl"
+        >
+          <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-emerald-500/10 border border-emerald-500/20 text-emerald-400 text-sm font-semibold tracking-wide mb-8">
             <span className="relative flex h-2 w-2">
               <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-emerald-400 opacity-75"></span>
               <span className="relative inline-flex rounded-full h-2 w-2 bg-emerald-500"></span>
@@ -30,7 +36,7 @@ const Hero = () => {
           </div>
           
           <h1 className="text-5xl md:text-7xl lg:text-8xl font-bold text-white leading-[1.1] mb-8 tracking-tight">
-            Fresh Fruit <span className="text-emerald-500">Import</span> & <span className="text-amber-500">Distribution</span>
+            {hero.title.split('Import')[0]} <span className="text-emerald-500">Import</span> & <span className="text-amber-500">Distribution</span>
           </h1>
           
           <p className="text-xl md:text-2xl text-slate-300 mb-12 leading-relaxed max-w-2xl font-light">
@@ -48,11 +54,8 @@ const Hero = () => {
               <Link to="/contact">{hero.ctaSecondary}</Link>
             </Button>
           </div>
-        </div>
+        </motion.div>
       </div>
-
-      {/* Decorative element */}
-      <div className="absolute bottom-0 right-0 w-1/3 h-1/2 bg-gradient-to-t from-emerald-500/10 to-transparent blur-3xl pointer-events-none" />
     </section>
   );
 };
