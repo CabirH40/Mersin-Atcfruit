@@ -73,7 +73,8 @@ const Navbar = () => {
           <div className="flex items-center gap-4 border-l border-slate-200/20 pl-8">
             <LanguageSwitcher scrolled={scrolled} />
             <Button asChild className="bg-primary hover:bg-primary/90 text-white rounded-full px-8 font-bold shadow-lg shadow-primary/20">
-              <Link to="/contact">{t.hero.ctaSecondary}</Link</Button>
+              <Link to="/contact">{t.hero.ctaSecondary}</Link>
+            </Button>
           </div>
         </div>
 
