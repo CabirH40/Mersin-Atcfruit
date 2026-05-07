@@ -10,20 +10,24 @@
     --card-foreground: 222.2 84% 4.9%;
     --popover: 0 0% 100%;
     --popover-foreground: 222.2 84% 4.9%;
-    --primary: 161 94% 30%; /* Emerald 700 */
+    
+    /* الهوية الجديدة: أخضر غامق وذهبي */
+    --primary: 158 100% 18%; /* Deep Forest Green #005c3a */
     --primary-foreground: 210 40% 98%;
-    --secondary: 38 92% 50%; /* Amber 500 */
+    
+    --secondary: 38 92% 55%; /* Golden Yellow #f5a623 */
     --secondary-foreground: 222.2 47.4% 11.2%;
+    
     --muted: 210 40% 96.1%;
     --muted-foreground: 215.4 16.3% 46.9%;
-    --accent: 210 40% 96.1%;
-    --accent-foreground: 222.2 47.4% 11.2%;
+    --accent: 158 100% 95%;
+    --accent-foreground: 158 100% 18%;
     --destructive: 0 84.2% 60.2%;
     --destructive-foreground: 210 40% 98%;
     --border: 214.3 31.8% 91.4%;
     --input: 214.3 31.8% 91.4%;
-    --ring: 161 94% 30%;
-    --radius: 1rem;
+    --ring: 158 100% 18%;
+    --radius: 1.25rem;
   }
 }
 
@@ -58,14 +62,19 @@
 
 /* Custom Scrollbar */
 ::-webkit-scrollbar {
-  width: 10px;
+  width: 8px;
 }
 ::-webkit-scrollbar-track {
-  @apply bg-slate-100;
+  @apply bg-slate-50;
 }
 ::-webkit-scrollbar-thumb {
-  @apply bg-slate-300 rounded-full border-4 border-solid border-slate-100;
+  @apply bg-primary/20 rounded-full border-2 border-solid border-slate-50;
 }
 ::-webkit-scrollbar-thumb:hover {
-  @apply bg-emerald-600;
+  @apply bg-primary/40;
+}
+
+/* Premium Card Hover Effect */
+.premium-card {
+  @apply transition-all duration-500 hover:shadow-[0_20px_50px_rgba(0,92,58,0.1)];
 }
